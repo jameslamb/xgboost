@@ -76,7 +76,7 @@ def _test_cupy_training(DMatrixT):
 
     evals_result_cupy = {}
     dtrain_cp = DMatrixT(X, y, weight=cupy_weights, base_margin=cupy_base_margin)
-    params = {"tree_method": "hist", "device": "cuda:0"}
+    params = {"tree_method": "hist", "device": "cuda:0", "fail_on_invalid_gpu_id": True}
     xgb.train(
         params, dtrain_cp, evals=[(dtrain_cp, "train")], evals_result=evals_result_cupy
     )
@@ -227,5 +227,11 @@ class TestFromCupy:
         dtrain = dmatrix_from_cupy(np.float32, xgb.QuantileDMatrix, np.nan)
         with pytest.raises(xgb.core.XGBoostError, match="Invalid device ordinal"):
             xgb.train(
-                {"tree_method": "hist", "device": "cuda:1"}, dtrain, num_boost_round=10
+                {
+                    "tree_method": "hist",
+                    "device": "cuda:1",
+                    "fail_on_invalid_gpu_id": True,
+                },
+                dtrain,
+                num_boost_round=10,
             )
