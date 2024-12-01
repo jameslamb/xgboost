@@ -46,13 +46,10 @@ try:
     from sklearn.base import BaseEstimator as XGBModelBase
     from sklearn.base import ClassifierMixin as XGBClassifierBase
     from sklearn.base import RegressorMixin as XGBRegressorBase
-    from sklearn.preprocessing import LabelEncoder
 
     try:
-        from sklearn.model_selection import KFold as XGBKFold
         from sklearn.model_selection import StratifiedKFold as XGBStratifiedKFold
     except ImportError:
-        from sklearn.cross_validation import KFold as XGBKFold
         from sklearn.cross_validation import StratifiedKFold as XGBStratifiedKFold
 
     SKLEARN_INSTALLED = True
@@ -64,9 +61,7 @@ except ImportError:
     XGBModelBase = object
     XGBClassifierBase = object
     XGBRegressorBase = object
-    LabelEncoder = object
 
-    XGBKFold = None
     XGBStratifiedKFold = None
 
 
