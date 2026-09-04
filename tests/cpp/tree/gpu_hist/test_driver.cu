@@ -2,6 +2,7 @@
  * Copyright 2020-2025, XGBoost contributors
  */
 #include <gtest/gtest.h>
+
 #include "../../../../src/tree/driver.h"
 #include "../../../../src/tree/gpu_hist/expand_entry.cuh"
 

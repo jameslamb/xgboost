@@ -46,9 +46,7 @@ def get_header_guard_dmlc(filename: str) -> str:
         file_path_from_root = _HELPER.project_name + file_path_from_root[idx + 3 :]
     elif file_path_from_root.find("tests/") != -1 and _HELPER.project_name is not None:
         idx = file_path_from_root.find("tests/")
-        file_path_from_root = (
-            _HELPER.project_name + "_" + file_path_from_root[idx:]
-        )
+        file_path_from_root = _HELPER.project_name + "_" + file_path_from_root[idx:]
     else:
         idx = file_path_from_root.find("include/")
         if idx != -1:

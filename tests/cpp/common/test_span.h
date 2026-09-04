@@ -18,24 +18,22 @@ XGBOOST_DEVICE void InitializeRange(Iter _begin, Iter _end) {
 namespace xgboost {
 namespace common {
 
-#define SPAN_ASSERT_TRUE(cond, status)          \
-  if (!(cond)) {                                \
-    *(status) = -1;                             \
+#define SPAN_ASSERT_TRUE(cond, status) \
+  if (!(cond)) {                       \
+    *(status) = -1;                    \
   }
 
-#define SPAN_ASSERT_FALSE(cond, status)         \
-  if ((cond)) {                                 \
-    *(status) = -1;                             \
+#define SPAN_ASSERT_FALSE(cond, status) \
+  if ((cond)) {                         \
+    *(status) = -1;                     \
   }
 
 struct TestTestStatus {
-  int * status_;
+  int* status_;
 
-  TestTestStatus(int* _status): status_(_status) {}
+  explicit TestTestStatus(int* _status) : status_(_status) {}
 
-  XGBOOST_DEVICE void operator()() {
-    this->operator()(0);
-  }
+  XGBOOST_DEVICE void operator()() { this->operator()(0); }
   XGBOOST_DEVICE void operator()(size_t) {  // size_t for CUDA index
     SPAN_ASSERT_TRUE(false, status_);
   }
@@ -44,11 +42,9 @@ struct TestTestStatus {
 struct TestAssignment {
   int* status_;
 
-  TestAssignment(int* _status) : status_(_status) {}
+  explicit TestAssignment(int* _status) : status_(_status) {}
 
-  XGBOOST_DEVICE void operator()() {
-    this->operator()(0);
-  }
+  XGBOOST_DEVICE void operator()() { this->operator()(0); }
   XGBOOST_DEVICE void operator()(size_t) {  // size_t for CUDA index
     Span<float> s1;
 
@@ -66,33 +62,29 @@ struct TestAssignment {
 struct TestBeginEnd {
   int* status_;
 
-  TestBeginEnd(int* _status) : status_(_status) {}
+  explicit TestBeginEnd(int* _status) : status_(_status) {}
 
-  XGBOOST_DEVICE void operator()() {
-    this->operator()(0);
-  }
+  XGBOOST_DEVICE void operator()() { this->operator()(0); }
   XGBOOST_DEVICE void operator()(size_t) {  // size_t for CUDA index
     float arr[16];
     InitializeRange(arr, arr + 16);
 
     Span<float> s(arr);
-    Span<float>::iterator beg { s.begin() };
-    Span<float>::iterator end { s.end() };
+    Span<float>::iterator beg{s.begin()};
+    Span<float>::iterator end{s.end()};
 
-    SPAN_ASSERT_TRUE(end ==  beg + 16, status_);
+    SPAN_ASSERT_TRUE(end == beg + 16, status_);
     SPAN_ASSERT_TRUE(*beg == arr[0], status_);
     SPAN_ASSERT_TRUE(*(end - 1) == arr[15], status_);
   }
 };
 
 struct TestRBeginREnd {
-  int * status_;
+  int* status_;
 
-  TestRBeginREnd(int* _status): status_(_status) {}
+  explicit TestRBeginREnd(int* _status) : status_(_status) {}
 
-  XGBOOST_DEVICE void operator()() {
-    this->operator()(0);
-  }
+  XGBOOST_DEVICE void operator()() { this->operator()(0); }
   XGBOOST_DEVICE void operator()(size_t) {  // size_t for CUDA index
     float arr[16];
     InitializeRange(arr, arr + 16);
@@ -114,17 +106,15 @@ struct TestRBeginREnd {
 };
 
 struct TestObservers {
-  int * status_;
+  int* status_;
 
-  TestObservers(int * _status): status_(_status) {}
+  explicit TestObservers(int* _status) : status_(_status) {}
 
-  XGBOOST_DEVICE void operator()() {
-    this->operator()(0);
-  }
+  XGBOOST_DEVICE void operator()() { this->operator()(0); }
   XGBOOST_DEVICE void operator()(size_t) {  // size_t for CUDA index
     // empty
     {
-      float *arr = nullptr;
+      float* arr = nullptr;
       Span<float> s(arr, static_cast<Span<float>::index_type>(0));
       SPAN_ASSERT_TRUE(s.empty(), status_);
     }
@@ -135,19 +125,17 @@ struct TestObservers {
       Span<float> s(arr, 16);
       SPAN_ASSERT_TRUE(s.size() == 16, status_);
       SPAN_ASSERT_TRUE(s.size_bytes() == 16 * sizeof(float), status_);
-      delete [] arr;
+      delete[] arr;
     }
   }
 };
 
 struct TestCompare {
-  int * status_;
+  int* status_;
 
-  TestCompare(int * _status): status_(_status) {}
+  explicit TestCompare(int* _status) : status_(_status) {}
 
-  XGBOOST_DEVICE void operator()() {
-    this->operator()(0);
-  }
+  XGBOOST_DEVICE void operator()() { this->operator()(0); }
   XGBOOST_DEVICE void operator()(size_t) {  // size_t for CUDA index
     float lhs_arr[16], rhs_arr[16];
     InitializeRange(lhs_arr, lhs_arr + 16);
@@ -171,13 +159,11 @@ struct TestCompare {
 };
 
 struct TestIterConstruct {
-  int * status_;
+  int* status_;
 
-  TestIterConstruct(int * _status): status_(_status) {}
+  explicit TestIterConstruct(int* _status) : status_(_status) {}
 
-  XGBOOST_DEVICE void operator()() {
-    this->operator()(0);
-  }
+  XGBOOST_DEVICE void operator()() { this->operator()(0); }
   XGBOOST_DEVICE void operator()(size_t) {  // size_t for CUDA index.
     Span<float>::iterator it1;
     Span<float>::iterator it2;
@@ -190,13 +176,11 @@ struct TestIterConstruct {
 };
 
 struct TestIterRef {
-  int * status_;
+  int* status_;
 
-  TestIterRef(int * _status): status_(_status) {}
+  explicit TestIterRef(int* _status) : status_(_status) {}
 
-  XGBOOST_DEVICE void operator()() {
-    this->operator()(0);
-  }
+  XGBOOST_DEVICE void operator()() { this->operator()(0); }
   XGBOOST_DEVICE void operator()(size_t) {  // size_t for CUDA index
     float arr[16];
     InitializeRange(arr, arr + 16);
@@ -208,19 +192,17 @@ struct TestIterRef {
 };
 
 struct TestIterCalculate {
-  int * status_;
+  int* status_;
 
-  TestIterCalculate(int * _status): status_(_status) {}
+  explicit TestIterCalculate(int* _status) : status_(_status) {}
 
-  XGBOOST_DEVICE void operator()() {
-    this->operator()(0);
-  }
+  XGBOOST_DEVICE void operator()() { this->operator()(0); }
   XGBOOST_DEVICE void operator()(size_t) {  // size_t for CUDA index
     float arr[16];
     InitializeRange(arr, arr + 16);
 
     Span<float> s(arr);
-    Span<float>::iterator beg { s.begin() };
+    Span<float>::iterator beg{s.begin()};
 
     beg += 4;
     SPAN_ASSERT_TRUE(*beg == 4, status_);
@@ -241,19 +223,17 @@ struct TestIterCalculate {
 };
 
 struct TestIterCompare {
-  int * status_;
+  int* status_;
 
-  TestIterCompare(int * _status): status_(_status) {}
+  explicit TestIterCompare(int* _status) : status_(_status) {}
 
-  XGBOOST_DEVICE void operator()() {
-    this->operator()(0);
-  }
+  XGBOOST_DEVICE void operator()() { this->operator()(0); }
   XGBOOST_DEVICE void operator()(size_t) {  // size_t for CUDA index
     float arr[16];
     InitializeRange(arr, arr + 16);
     Span<float> s(arr);
-    Span<float>::iterator left { s.begin() };
-    Span<float>::iterator right { s.end() };
+    Span<float>::iterator left{s.begin()};
+    Span<float>::iterator right{s.end()};
 
     left += 1;
     right -= 15;
@@ -271,23 +251,20 @@ struct TestIterCompare {
 };
 
 struct TestAsBytes {
-  int * status_;
+  int* status_;
 
-  TestAsBytes(int * _status): status_(_status) {}
+  explicit TestAsBytes(int* _status) : status_(_status) {}
 
-  XGBOOST_DEVICE void operator()() {
-    this->operator()(0);
-  }
+  XGBOOST_DEVICE void operator()() { this->operator()(0); }
   XGBOOST_DEVICE void operator()(size_t) {  // size_t for CUDA index
     float arr[16];
     InitializeRange(arr, arr + 16);
 
     {
-      const Span<const float> s {arr};
+      const Span<const float> s{arr};
       const Span<const byte> bs = as_bytes(s);
       SPAN_ASSERT_TRUE(bs.size() == s.size_bytes(), status_);
-      SPAN_ASSERT_TRUE(static_cast<const void*>(bs.data()) ==
-                       static_cast<const void*>(s.data()),
+      SPAN_ASSERT_TRUE(static_cast<const void*>(bs.data()) == static_cast<const void*>(s.data()),
                        status_);
     }
 
@@ -297,8 +274,7 @@ struct TestAsBytes {
       SPAN_ASSERT_TRUE(bs.size() == s.size(), status_);
       SPAN_ASSERT_TRUE(bs.size() == 0, status_);
       SPAN_ASSERT_TRUE(bs.size_bytes() == 0, status_);
-      SPAN_ASSERT_TRUE(static_cast<const void*>(bs.data()) ==
-                       static_cast<const void*>(s.data()),
+      SPAN_ASSERT_TRUE(static_cast<const void*>(bs.data()) == static_cast<const void*>(s.data()),
                        status_);
       SPAN_ASSERT_TRUE(bs.data() == nullptr, status_);
     }
@@ -306,13 +282,11 @@ struct TestAsBytes {
 };
 
 struct TestAsWritableBytes {
-  int * status_;
+  int* status_;
 
-  TestAsWritableBytes(int * _status): status_(_status) {}
+  explicit TestAsWritableBytes(int* _status) : status_(_status) {}
 
-  XGBOOST_DEVICE void operator()() {
-    this->operator()(0);
-  }
+  XGBOOST_DEVICE void operator()() { this->operator()(0); }
   XGBOOST_DEVICE void operator()(size_t) {  // size_t for CUDA index
     float arr[16];
     InitializeRange(arr, arr + 16);
@@ -325,16 +299,14 @@ struct TestAsWritableBytes {
       SPAN_ASSERT_TRUE(bs.size() == 0, status_);
       SPAN_ASSERT_TRUE(bs.size_bytes() == 0, status_);
       SPAN_ASSERT_TRUE(bs.data() == nullptr, status_);
-      SPAN_ASSERT_TRUE(static_cast<void*>(bs.data()) ==
-                       static_cast<void*>(s.data()), status_);
+      SPAN_ASSERT_TRUE(static_cast<void*>(bs.data()) == static_cast<void*>(s.data()), status_);
     }
 
     {
-      Span<float> s { arr };
-      Span<byte> bs { as_writable_bytes(s) };
+      Span<float> s{arr};
+      Span<byte> bs{as_writable_bytes(s)};
       SPAN_ASSERT_TRUE(s.size_bytes() == bs.size_bytes(), status_);
-      SPAN_ASSERT_TRUE(static_cast<void*>(bs.data()) ==
-                       static_cast<void*>(s.data()), status_);
+      SPAN_ASSERT_TRUE(static_cast<void*>(bs.data()) == static_cast<void*>(s.data()), status_);
     }
   }
 };

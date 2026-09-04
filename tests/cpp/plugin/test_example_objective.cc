@@ -3,7 +3,9 @@
  */
 #include <gtest/gtest.h>
 #include <xgboost/objective.h>
+
 #include <string>
+
 #include "../helpers.h"
 
 namespace xgboost {
