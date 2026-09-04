@@ -157,7 +157,7 @@ TEST(Ryu, LooksLikePow5) {
 }
 
 TEST(Ryu, OutputLength) {
-  TestRyu("1E0", 1.0f); // already tested in Basic
+  TestRyu("1E0", 1.0f);  // already tested in Basic
   TestRyu("1.2E0", 1.2f);
   TestRyu("1.23E0", 1.23f);
   TestRyu("1.234E0", 1.234f);
@@ -201,7 +201,7 @@ TEST(Ryu, MinMax) {
 TEST(Ryu, MantissaRoundingOverflow) {
   TestRyuParse(1.0f, "0.999999999");
   TestRyuParse(INFINITY, "3.4028236e+38");
-  TestRyuParse(1.1754944e-38f, "1.17549430e-38"); // FLT_MIN
+  TestRyuParse(1.1754944e-38f, "1.17549430e-38");  // FLT_MIN
 }
 
 TEST(Ryu, TrailingZeros) {

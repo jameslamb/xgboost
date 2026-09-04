@@ -107,4 +107,4 @@ TEST(IntrusivePtr, Basic) {
   ASSERT_EQ(ptr_1, ptr_1);
   ASSERT_EQ(ptr_1 < ptr_2, ptr_1.get() < ptr_2.get());
 }
-} // namespace xgboost
+}  // namespace xgboost

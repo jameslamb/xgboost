@@ -30,7 +30,7 @@ inline std::string ObjTestNameGenerator(const ::testing::TestParamInfo<ParamType
     name[std::distance(name.cbegin(), it)] = '_';
   }
   return name;
-};
+}
 
 /**
  * @brief Construct random label for testing.

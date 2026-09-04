@@ -1,8 +1,8 @@
 /**
  * Copyright 2020-2023 by XGBoost Contributors
  */
-#ifndef TESTS_CPP_PREDICTOR_TEST_PREDICTOR_H_
-#define TESTS_CPP_PREDICTOR_TEST_PREDICTOR_H_
+#ifndef XGBOOST_TESTS_CPP_PREDICTOR_TEST_PREDICTOR_H_
+#define XGBOOST_TESTS_CPP_PREDICTOR_TEST_PREDICTOR_H_
 
 #include <xgboost/context.h>  // for Context
 #include <xgboost/predictor.h>
@@ -114,4 +114,4 @@ void TestVectorLeafPrediction(Context const* ctx);
 
 }  // namespace xgboost
 
-#endif  // TESTS_CPP_PREDICTOR_TEST_PREDICTOR_H_
+#endif  // XGBOOST_TESTS_CPP_PREDICTOR_TEST_PREDICTOR_H_

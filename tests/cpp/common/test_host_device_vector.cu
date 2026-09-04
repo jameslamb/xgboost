@@ -137,11 +137,11 @@ TEST(HostDeviceVector, Copy) {
 }
 
 TEST(HostDeviceVector, SetDevice) {
-  std::vector<int> h_vec (2345);
+  std::vector<int> h_vec(2345);
   for (size_t i = 0; i < h_vec.size(); ++i) {
     h_vec[i] = i;
   }
-  HostDeviceVector<int> vec (h_vec);
+  HostDeviceVector<int> vec(h_vec);
   auto device = DeviceOrd::CUDA(0);
 
   vec.SetDevice(device);

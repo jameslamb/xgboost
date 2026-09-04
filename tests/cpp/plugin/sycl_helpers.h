@@ -23,7 +23,13 @@ void TransformOnDeviceData(DeviceOrd device, T* device_data, size_t n_data, Fn&&
 }
 
 template<typename T>
-void VerifyOnDeviceData(DeviceOrd device, const T* device_data, const T* host_data, size_t n_data, T eps = T()) {
+void VerifyOnDeviceData(
+  DeviceOrd device,
+  const T* device_data,
+  const T* host_data,
+  size_t n_data,
+  T eps = T()
+) {
   sycl::DeviceManager device_manager;
   ::sycl::queue* qu = device_manager.GetQueue(device);
 

@@ -1,6 +1,6 @@
 // Copyright by Contributors
-#ifndef TESTS_CPP_METRIC_TEST_MULTICLASS_METRIC_H_
-#define TESTS_CPP_METRIC_TEST_MULTICLASS_METRIC_H_
+#ifndef XGBOOST_TESTS_CPP_METRIC_TEST_MULTICLASS_METRIC_H_
+#define XGBOOST_TESTS_CPP_METRIC_TEST_MULTICLASS_METRIC_H_
 
 #include <xgboost/metric.h>
 
@@ -88,4 +88,4 @@ inline void VerifyMultiClassLogLoss(DeviceOrd device) {
 }  // namespace metric
 }  // namespace xgboost
 
-#endif  // TESTS_CPP_METRIC_TEST_MULTICLASS_METRIC_H_
+#endif  // XGBOOST_TESTS_CPP_METRIC_TEST_MULTICLASS_METRIC_H_

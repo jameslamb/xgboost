@@ -1,3 +1,6 @@
+/**
+ * Copyright 2023 by XGBoost contributors
+ */
 #include <gtest/gtest.h>
 #include <xgboost/objective.h>
 #include <string>

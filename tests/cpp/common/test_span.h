@@ -1,8 +1,8 @@
 /*!
  * Copyright 2018 XGBoost contributors
  */
-#ifndef XGBOOST_TEST_SPAN_H_
-#define XGBOOST_TEST_SPAN_H_
+#ifndef XGBOOST_TESTS_CPP_COMMON_TEST_SPAN_H_
+#define XGBOOST_TESTS_CPP_COMMON_TEST_SPAN_H_
 
 #include <xgboost/base.h>
 #include <xgboost/span.h>
@@ -75,7 +75,7 @@ struct TestBeginEnd {
     float arr[16];
     InitializeRange(arr, arr + 16);
 
-    Span<float> s (arr);
+    Span<float> s(arr);
     Span<float>::iterator beg { s.begin() };
     Span<float>::iterator end { s.end() };
 
@@ -97,7 +97,7 @@ struct TestRBeginREnd {
     float arr[16];
     InitializeRange(arr, arr + 16);
 
-    Span<float> s (arr);
+    Span<float> s(arr);
 
 #if defined(__CUDA_ARCH__)
     auto rbeg = dh::trbegin(s);
@@ -132,7 +132,7 @@ struct TestObservers {
     // size, size_types
     {
       float* arr = new float[16];
-      Span<float> s (arr, 16);
+      Span<float> s(arr, 16);
       SPAN_ASSERT_TRUE(s.size() == 16, status_);
       SPAN_ASSERT_TRUE(s.size_bytes() == 16 * sizeof(float), status_);
       delete [] arr;
@@ -201,7 +201,7 @@ struct TestIterRef {
     float arr[16];
     InitializeRange(arr, arr + 16);
 
-    Span<float> s (arr);
+    Span<float> s(arr);
     SPAN_ASSERT_TRUE(*(s.begin()) == s[0], status_);
     SPAN_ASSERT_TRUE(*(s.end() - 1) == s[15], status_);
   }
@@ -219,7 +219,7 @@ struct TestIterCalculate {
     float arr[16];
     InitializeRange(arr, arr + 16);
 
-    Span<float> s (arr);
+    Span<float> s(arr);
     Span<float>::iterator beg { s.begin() };
 
     beg += 4;
@@ -251,7 +251,7 @@ struct TestIterCompare {
   XGBOOST_DEVICE void operator()(size_t) {  // size_t for CUDA index
     float arr[16];
     InitializeRange(arr, arr + 16);
-    Span<float> s (arr);
+    Span<float> s(arr);
     Span<float>::iterator left { s.begin() };
     Span<float>::iterator right { s.end() };
 
@@ -342,4 +342,4 @@ struct TestAsWritableBytes {
 }  // namespace common
 }  // namespace xgboost
 
-#endif
+#endif  // XGBOOST_TESTS_CPP_COMMON_TEST_SPAN_H_

@@ -129,7 +129,7 @@ TEST(SyclPartitionBuilder, BasicTest) {
   std::vector<size_t> rows_for_left_node = { 2, 0, 7, 1, 2 };
 
   size_t first_row_id = 0;
-  for(size_t nid = 0; nid < kNodes; ++nid) {
+  for (size_t nid = 0; nid < kNodes; ++nid) {
     size_t n_rows_nodes = rows[nid];
 
     auto rid_buff = builder.GetData(nid);
@@ -165,17 +165,17 @@ TEST(SyclPartitionBuilder, BasicTest) {
   ::sycl::event event;
   std::vector<size_t> v(*std::max_element(rows.begin(), rows.end()));
   size_t row_id = 0;
-  for(size_t nid = 0; nid < kNodes; ++nid) {
+  for (size_t nid = 0; nid < kNodes; ++nid) {
     builder.MergeToArray(nid, v.data(), &event);
     qu->wait();
 
     // Check that row_id for left side are correct
-    for(size_t j = 0; j < rows_for_left_node[nid]; ++j) {
+    for (size_t j = 0; j < rows_for_left_node[nid]; ++j) {
        ASSERT_EQ(v[j], row_id++);
     }
 
     // Check that row_id for right side are correct
-    for(size_t j = 0; j < rows[nid] - rows_for_left_node[nid]; ++j) {
+    for (size_t j = 0; j < rows[nid] - rows_for_left_node[nid]; ++j) {
       ASSERT_EQ(v[rows[nid] - j - 1], row_id++);
     }
 
@@ -203,4 +203,4 @@ TEST(SyclPartitionBuilder, PartitioningDence32Bits) {
   TestPartitioning(0.0, (1u << 16) + 1);
 }
 
-}  // namespace xgboost::common
+}  // namespace xgboost::sycl::common

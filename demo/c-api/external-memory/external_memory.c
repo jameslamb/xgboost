@@ -100,7 +100,7 @@ void DataIterator_Free(DataIter *self) {
   free(self->lengths);
   free(self->labels);
   safe_xgboost(XGDMatrixFree(self->_proxy));
-};
+}
 
 int DataIterator_Next(DataIterHandle handle) {
   DataIter *self = (DataIter *)(handle);

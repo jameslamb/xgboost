@@ -318,7 +318,7 @@ TEST(SimpleDMatrix, FromColumnarSparseBasic) {
 }
 
 
-TEST(SimpleDMatrix, FromCupy){
+TEST(SimpleDMatrix, FromCupy) {
   int rows = 50;
   int cols = 10;
   thrust::device_vector< float> data(rows*cols);
@@ -343,7 +343,7 @@ TEST(SimpleDMatrix, FromCupy){
   }
 }
 
-TEST(SimpleDMatrix, FromCupySparse){
+TEST(SimpleDMatrix, FromCupySparse) {
   int rows = 2;
   int cols = 2;
   thrust::device_vector< float> data(rows*cols);

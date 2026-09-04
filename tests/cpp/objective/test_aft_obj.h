@@ -1,8 +1,8 @@
 /**
  * Copyright 2020-2024 by XGBoost Contributors
  */
-#ifndef XGBOOST_TEST_AFT_OBJ_H_
-#define XGBOOST_TEST_AFT_OBJ_H_
+#ifndef XGBOOST_TESTS_CPP_OBJECTIVE_TEST_AFT_OBJ_H_
+#define XGBOOST_TESTS_CPP_OBJECTIVE_TEST_AFT_OBJ_H_
 
 #include <xgboost/context.h>  // for Context
 
@@ -20,4 +20,4 @@ void TestAFTObjGPairIntervalCensoredLabels(const Context* ctx);
 
 }  // namespace xgboost::common
 
-#endif  // XGBOOST_TEST_AFT_OBJ_H_
+#endif  // XGBOOST_TESTS_CPP_OBJECTIVE_TEST_AFT_OBJ_H_

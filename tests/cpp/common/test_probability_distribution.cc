@@ -111,5 +111,5 @@ TEST(ProbabilityDistribution, ExtremeDist) {
   EXPECT_NEAR(variance, kPI * kPI / 6.0, 1e-6);
 }
 
-} // namespace common
+}  // namespace common
 }  // namespace xgboost

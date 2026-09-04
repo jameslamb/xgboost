@@ -41,7 +41,8 @@ void InitHostDeviceVector(size_t n, DeviceOrd device, HostDeviceVector<int> *v) 
 
 void PlusOne(HostDeviceVector<int> *v) {
   auto device = v->Device();
-  sycl::TransformOnDeviceData(v->Device(), v->DevicePointer(), v->Size(), [=](size_t a){ return a + 1; });
+  sycl::TransformOnDeviceData(
+    v->Device(), v->DevicePointer(), v->Size(), [=](size_t a){ return a + 1; });
   ASSERT_TRUE(v->DeviceCanWrite());
 }
 
@@ -165,11 +166,11 @@ TEST(SyclHostDeviceVector, Extend) {
 }
 
 TEST(SyclHostDeviceVector, SetDevice) {
-  std::vector<int> h_vec (2345);
+  std::vector<int> h_vec(2345);
   for (size_t i = 0; i < h_vec.size(); ++i) {
     h_vec[i] = i;
   }
-  HostDeviceVector<int> vec (h_vec);
+  HostDeviceVector<int> vec(h_vec);
   auto device = DeviceOrd::SyclDefault();
 
   vec.SetDevice(device);
@@ -247,5 +248,5 @@ TEST(SyclHostDeviceVector, Resize) {
     check(vec);
   }
 }
-}
+}  // namespace
 }  // namespace xgboost::common

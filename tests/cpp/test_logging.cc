@@ -1,3 +1,6 @@
+/*!
+ * Copyright 2018-2026 XGBoost contributors
+ */
 #include <map>
 
 #include <gtest/gtest.h>

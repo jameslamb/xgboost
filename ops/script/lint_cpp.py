@@ -28,10 +28,12 @@ def get_header_guard_dmlc(filename: str) -> str:
 
     For headers in include, directly use the path
     For headers in src, use project name plus path
+    For headers in tests, use project name plus path
 
     Examples: with project-name = dmlc
         include/dmlc/timer.h -> DMLC_TIMTER_H_
         src/io/libsvm_parser.h -> DMLC_IO_LIBSVM_PARSER_H_
+        tests/cpp/test_shap.h -> DMLC_TESTS_CPP_TEST_SHAP_H_
     """
     fileinfo = cpplint.FileInfo(filename)
     file_path_from_root = fileinfo.RepositoryName()
@@ -42,6 +44,11 @@ def get_header_guard_dmlc(filename: str) -> str:
     if file_path_from_root.find("src/") != -1 and _HELPER.project_name is not None:
         idx = file_path_from_root.find("src/")
         file_path_from_root = _HELPER.project_name + file_path_from_root[idx + 3 :]
+    elif file_path_from_root.find("tests/") != -1 and _HELPER.project_name is not None:
+        idx = file_path_from_root.find("tests/")
+        file_path_from_root = (
+            _HELPER.project_name + "_" + file_path_from_root[idx:]
+        )
     else:
         idx = file_path_from_root.find("include/")
         if idx != -1:

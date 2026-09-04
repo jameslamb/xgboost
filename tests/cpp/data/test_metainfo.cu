@@ -13,7 +13,10 @@
 namespace xgboost {
 
 template <typename T>
-std::string PrepareData(std::string typestr, thrust::device_vector<T>* out, const size_t kRows=16) {
+std::string PrepareData(
+  std::string typestr,
+  thrust::device_vector<T>* out,
+  const size_t kRows = 16) {
   out->resize(kRows);
   auto& d_data = *out;
 

@@ -22,10 +22,10 @@ TEST(StringView, Basic) {
   ASSERT_EQ(substr.size(), 2);
 
   ASSERT_EQ(StringView{"is"}.size(), 2);
-  ASSERT_TRUE(substr == "is");
-  ASSERT_FALSE(substr != "is");
-  ASSERT_FALSE(substr == "foobar");
-  ASSERT_FALSE(substr == "i");
+  ASSERT_TRUE(substr == "is");       // NOLINT(readability/check)
+  ASSERT_FALSE(substr != "is");      // NOLINT(readability/check)
+  ASSERT_FALSE(substr == "foobar");  // NOLINT(readability/check)
+  ASSERT_FALSE(substr == "i");       // NOLINT(readability/check)
 
   ASSERT_TRUE(std::equal(substr.crbegin(), substr.crend(), StringView{"si"}.cbegin()));
 

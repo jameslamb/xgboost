@@ -1,5 +1,5 @@
-#ifndef TESTS_CPP_TREE_TEST_EVALUATE_SPLITS_H_
-#define TESTS_CPP_TREE_TEST_EVALUATE_SPLITS_H_
+#ifndef XGBOOST_TESTS_CPP_TREE_TEST_EVALUATE_SPLITS_H_
+#define XGBOOST_TESTS_CPP_TREE_TEST_EVALUATE_SPLITS_H_
 
 /**
  * Copyright 2022-2024, XGBoost Contributors
@@ -92,4 +92,4 @@ class TestCategoricalSplitWithMissing : public testing::Test {
 };
 }  // namespace xgboost::tree
 
-#endif  // TESTS_CPP_TREE_TEST_EVALUATE_SPLITS_H_
+#endif  // XGBOOST_TESTS_CPP_TREE_TEST_EVALUATE_SPLITS_H_

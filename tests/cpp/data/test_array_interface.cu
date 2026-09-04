@@ -31,7 +31,7 @@ TEST(ArrayInterface, Stream) {
 
   dh::caching_device_vector<uint64_t> out(1, 0);
   std::uint64_t dur = 1e9;
-  dh::LaunchKernel{1, 1, 0, stream.View()}(SleepForTest, out.data().get(), dur);
+  dh::LaunchKernel {1, 1, 0, stream.View()}(SleepForTest, out.data().get(), dur);
   ArrayInterface<2> arr(arr_str);
 
   auto t = out[0];

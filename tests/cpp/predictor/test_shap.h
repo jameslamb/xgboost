@@ -1,8 +1,8 @@
 /**
  * Copyright 2020-2026, XGBoost Contributors
  */
-#ifndef TESTS_CPP_PREDICTOR_TEST_SHAP_H_
-#define TESTS_CPP_PREDICTOR_TEST_SHAP_H_
+#ifndef XGBOOST_TESTS_CPP_PREDICTOR_TEST_SHAP_H_
+#define XGBOOST_TESTS_CPP_PREDICTOR_TEST_SHAP_H_
 
 #include <xgboost/base.h>
 #include <xgboost/context.h>
@@ -30,4 +30,4 @@ std::vector<ShapTestCase> BuildShapTestCases(Context const* ctx);
 
 }  // namespace xgboost
 
-#endif  // TESTS_CPP_PREDICTOR_TEST_SHAP_H_
+#endif  // XGBOOST_TESTS_CPP_PREDICTOR_TEST_SHAP_H_

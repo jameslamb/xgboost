@@ -1,3 +1,6 @@
+/**
+ * Copyright 2025-2026, XGBoost Contributors
+ */
 #include <gtest/gtest.h>
 #include <xgboost/context.h>
 

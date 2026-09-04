@@ -73,6 +73,5 @@ TEST(SyclRowSetCollection, AddSplits) {
     CHECK_EQ(elem.end, row_indices.End());
     CHECK_EQ(elem.node_id , nid_test);
   }
-
 }
 }  // namespace xgboost::sycl::common

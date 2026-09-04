@@ -1,8 +1,8 @@
 /*!
  * Copyright 2020 XGBoost contributors
  */
-#ifndef XGBOOST_TEST_JSON_IO_H_
-#define XGBOOST_TEST_JSON_IO_H_
+#ifndef XGBOOST_TESTS_CPP_LINEAR_TEST_JSON_IO_H_
+#define XGBOOST_TESTS_CPP_LINEAR_TEST_JSON_IO_H_
 
 #include <xgboost/linear_updater.h>
 #include <xgboost/json.h>
@@ -33,9 +33,8 @@ inline void TestUpdaterJsonIO(std::string updater_str) {
     auto eta = atof(get<String const>(config_1["linear_train_param"]["eta"]).c_str());
     ASSERT_NEAR(eta, 3.14, kRtEps);
   }
-
 }
 
 }  // namespace xgboost
 
-#endif  // XGBOOST_TEST_JSON_IO_H_
+#endif  // XGBOOST_TESTS_CPP_LINEAR_TEST_JSON_IO_H_
